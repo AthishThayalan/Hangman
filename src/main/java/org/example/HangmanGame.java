@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class HangmanGame {
     private final int maxIncorrectGuesses = 8;
     private WordBank wordBank;
@@ -10,6 +13,7 @@ public class HangmanGame {
     private int incorrectGuesses;
     private int attempts;
     private boolean gameWon;
+    private Set guessedLetters;
 
 
     public HangmanGame() {
@@ -21,6 +25,7 @@ public class HangmanGame {
         this.incorrectGuesses = 0;
         this.attempts = 0;
         this.gameWon = false;
+        this.guessedLetters = new HashSet();
     }
 
     private String getRandomWord(){
@@ -35,24 +40,29 @@ public class HangmanGame {
 
     public void play(){
         hangmanDisplay.welcomeMessage();
+
         do {
             System.out.println("-----------------------------------------------");
             hangmanDisplay.displayHangman(incorrectGuesses);
             char guess = userInput.getUserGuess();
-            this.attempts++;
+
             System.out.println("The actual word to guess is: " + wordToGuess);
-            updateGuessedWord(guess);
-            System.out.println("Guessed so far: " + guessedWord);
-
-            if (!wordToGuess.contains(String.valueOf(guess))) incorrectGuesses++;
-
+            if (!guessedLetters.contains(guess)) {
+                this.attempts++;
+                this.guessedLetters.add(guess);
+                updateGuessedWord(guess);
+                System.out.println("Guessed so far: " + guessedWord);
+                if (!wordToGuess.contains(String.valueOf(guess))) incorrectGuesses++;
+            } else {
+                System.out.println("You've already guessed this letter. Please guess a different one.");
+            }
 
             if (guessedWord.equals(wordToGuess)) {
                 gameWon = true;
                 break;
 
             }
-        } while (incorrectGuesses < maxIncorrectGuesses || !gameWon);
+        } while (incorrectGuesses < maxIncorrectGuesses && !gameWon);
 
         if(gameWon){
             System.out.println("Congratulations! You won ! It took you "+attempts+" attempts!");
