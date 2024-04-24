@@ -26,4 +26,10 @@ public class UserInput {
         } while (true);
         return guess;
     }
+
+    public boolean playAgain() {
+        System.out.print("Do you want to play again? (y/n): ");
+        String input = scanner.nextLine().trim().toLowerCase();
+        return input.equals("y");
+    }
 }

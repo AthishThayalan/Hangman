@@ -2,17 +2,17 @@ package org.example;
 
 public class HangmanDisplay {
 
-    private  final String[] hangmanASCII;
+    private final String[] hangmanASCII;
 
     public HangmanDisplay() {
         this.hangmanASCII = new String[]{
-                        "      |\n" +
+                "      |\n" +
                         "      |\n" +
                         "      |\n" +
                         "      |\n" +
                         "      |\n" +
                         "=========",
-                        "  +---+\n" +
+                "  +---+\n" +
                         "  |   |\n" +
                         "      |\n" +
                         "      |\n" +
@@ -20,7 +20,7 @@ public class HangmanDisplay {
                         "      |\n" +
                         "=========",
 
-                        "  +---+\n" +
+                "  +---+\n" +
                         "  |   |\n" +
                         "  O   |\n" +
                         "      |\n" +
@@ -28,7 +28,7 @@ public class HangmanDisplay {
                         "      |\n" +
                         "=========",
 
-                        "  +---+\n" +
+                "  +---+\n" +
                         "  |   |\n" +
                         "  O   |\n" +
                         "  |   |\n" +
@@ -36,7 +36,7 @@ public class HangmanDisplay {
                         "      |\n" +
                         "=========",
 
-                        "  +---+\n" +
+                "  +---+\n" +
                         "  |   |\n" +
                         "  O   |\n" +
                         " /|   |\n" +
@@ -44,7 +44,7 @@ public class HangmanDisplay {
                         "      |\n" +
                         "=========",
 
-                        "  +---+\n" +
+                "  +---+\n" +
                         "  |   |\n" +
                         "  O   |\n" +
                         " /|\\  |\n" +
@@ -52,7 +52,7 @@ public class HangmanDisplay {
                         "      |\n" +
                         "=========",
 
-                        "  +---+\n" +
+                "  +---+\n" +
                         "  |   |\n" +
                         "  O   |\n" +
                         " /|\\  |\n" +
@@ -60,7 +60,7 @@ public class HangmanDisplay {
                         "      |\n" +
                         "=========",
 
-                        "  +---+\n" +
+                "  +---+\n" +
                         "  |   |\n" +
                         "  O   |\n" +
                         " /|\\  |\n" +
@@ -71,19 +71,20 @@ public class HangmanDisplay {
 
     }
 
-    public String[] getHangmanASCII() {
+    private String[] getHangmanASCII() {
         return hangmanASCII;
     }
 
-    public void printASCII(){
-        for(String element:this.hangmanASCII){
-            System.out.println(element);
-        }
+    public void welcomeMessage() {
+        System.out.println(" _                                             \n" +
+                "| |                                            \n" +
+                "| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  \n" +
+                "| '_ \\ / _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ \n" +
+                "| | | | (_| | | | | (_| | | | | | | (_| | | | |\n" +
+                "|_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|\n" +
+                "                    __/ |                      \n" +
+                "                   |___/                       ");
     }
-    public int getSize(){
-        return this.hangmanASCII.length;
-    }
-
 
     public void displayHangman(int incorrectGuesses) {
         if (incorrectGuesses >= 0 && incorrectGuesses < this.hangmanASCII.length) {
