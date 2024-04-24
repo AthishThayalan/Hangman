@@ -85,11 +85,12 @@ public class HangmanDisplay {
     }
 
 
-    public  void displayHangman(int incorrectGuesses) {
+    public void displayHangman(int incorrectGuesses) {
         if (incorrectGuesses >= 0 && incorrectGuesses < this.hangmanASCII.length) {
             System.out.println(this.getHangmanASCII()[incorrectGuesses]);
         } else {
             System.out.println("Invalid number of incorrect guesses.");
         }
+
     }
 }
