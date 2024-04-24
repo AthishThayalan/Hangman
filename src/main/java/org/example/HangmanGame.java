@@ -30,13 +30,19 @@ public class HangmanGame {
         System.out.println("Welcome to my Hangman game!");
         System.out.println("All you gotta do is guess the word: ");
 
-        while(incorrectGuesses < maxIncorrectGuesses ){
+        do {
             char guess = userInput.getUserGuess();
             hangmanDisplay.displayHangman(incorrectGuesses);
-            System.out.println("The actual word to guess is: "+wordToGuess);
-            System.out.println("Guessed so far: "+guessedWord);
-            incorrectGuesses++;
-        }
+            System.out.println("The actual word to guess is: " + wordToGuess);
+            System.out.println("Guessed so far: " + guessedWord);
+
+            if (wordToGuess.contains(String.valueOf(guess))) {
+                System.out.println("Wheyyyyy you guessed correct. " + guess + " is in the word to guess");
+            } else {
+                System.out.println("No Unfortunately that is wrong.");
+                incorrectGuesses++;
+            }
+        } while (incorrectGuesses < maxIncorrectGuesses);
 
 
     }
