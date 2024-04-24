@@ -48,6 +48,5 @@ public class WordBank {
         for(String word:words){
             System.out.println(word);
         }
-
     }
 }
