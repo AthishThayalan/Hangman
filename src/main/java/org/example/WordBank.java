@@ -1,12 +1,13 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class WordBank {
-    private List<String> words = new ArrayList<>();
-    private Random random = new Random();
+    private final List<String> words = new ArrayList<>();
+    private final Random random = new Random();
 
     public WordBank() {
         String wordsString = "ant baboon badger bat bear beaver camel cat clam cobra cougar " +
@@ -18,9 +19,7 @@ public class WordBank {
                 "wombat zebra";
 
         String[] wordArray = wordsString.split(" ");
-        for (String word : wordArray) {
-            words.add(word);
-        }
+        words.addAll(Arrays.asList(wordArray));
     }
 
     public void addWord(String word) {

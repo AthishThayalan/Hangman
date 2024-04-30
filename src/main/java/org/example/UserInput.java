@@ -3,7 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 public class UserInput {
-    private Scanner scanner;
+    public   Scanner scanner;
 
     public UserInput(){
         this.scanner = new Scanner(System.in);
@@ -31,5 +31,13 @@ public class UserInput {
         System.out.print("Do you want to play again? (y/n): ");
         String input = scanner.nextLine().trim().toLowerCase();
         return input.equals("y");
+    }
+
+    public int getIntInput() {
+        return scanner.nextInt();
+    }
+
+    public void nextLine() {
+        scanner.nextLine();
     }
 }
