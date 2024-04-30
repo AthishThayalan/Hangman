@@ -27,7 +27,7 @@ public class UserInput {
         return guess;
     }
 
-    public boolean playAgain() {
+    public boolean playAgainInput() {
         System.out.print("Do you want to play again? (y/n): ");
         String input = scanner.nextLine().trim().toLowerCase();
         return input.equals("y");
@@ -45,5 +45,8 @@ public class UserInput {
 
     public void nextLine() {
         scanner.nextLine();
+    }
+    public void closeScanner() {
+        scanner.close();
     }
 }

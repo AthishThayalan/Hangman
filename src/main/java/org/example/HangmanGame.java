@@ -4,16 +4,16 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class HangmanGame {
-    private final int maxIncorrectGuesses = 8;
-    private WordBank wordBank;
-    private final HangmanDisplay hangmanDisplay;
-    private final UserInput userInput;
-    private String wordToGuess;
-    private String guessedWord;
-    private int incorrectGuesses;
-    private int attempts;
+    protected final int maxIncorrectGuesses = 8;
+    protected WordBank wordBank;
+    protected final HangmanDisplay hangmanDisplay;
+    protected final UserInput userInput;
+    protected String wordToGuess;
+    protected String guessedWord;
+    protected int incorrectGuesses;
+    protected int attempts;
     protected boolean gameWon;
-    private Set guessedLetters;
+    protected Set guessedLetters;
 
     public HangmanGame() {
         this.wordBank = new WordBank();
@@ -80,9 +80,6 @@ public class HangmanGame {
         }
     }
 
-    protected boolean isGameOver(){
-        return incorrectGuesses >= maxIncorrectGuesses || guessedWord.equals(wordToGuess);
-    }
 
     protected void handleGameOutcome() {
         if (gameWon) {
@@ -90,7 +87,12 @@ public class HangmanGame {
         } else {
             System.out.println("Unlucky you lost. You had "+attempts+" attempts.");
         }
-        boolean playAgain = userInput.playAgain();
+        playAgain();
+
+    }
+
+    protected void playAgain(){
+        boolean playAgain = userInput.playAgainInput();
         restartGame(playAgain);
     }
 

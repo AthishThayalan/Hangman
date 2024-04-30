@@ -5,7 +5,7 @@ import java.util.TimerTask;
 public class TimedHangmanGame extends HangmanGame {
 
     private Timer timer;
-    private final int TIME_LIMIT = 3;
+    private final int TIME_LIMIT = 2;
     private int timeRemaining;
 
     public TimedHangmanGame(){
@@ -19,6 +19,7 @@ public class TimedHangmanGame extends HangmanGame {
         timer = new Timer();
         this.timeRemaining = TIME_LIMIT;
         startTimer();
+
     }
 
     private void startTimer() {
@@ -26,29 +27,27 @@ public class TimedHangmanGame extends HangmanGame {
             @Override
             public void run() {
                 if (!gameWon && timeRemaining > 0) {
-                    System.out.println(timeRemaining);
                     timeRemaining--;
                 } else {
                     timer.cancel();
-                    if(!gameWon){
-                        System.out.println("Times up! You ran out of time!");
-                        handleGameOutcome();
+                    if (!gameWon) {
+                        System.out.println("Time's up! You ran out of time! The word was '"+wordToGuess+"'");
                     }
                 }
             }
         }, 1000, 1000);
+
     }
+
 
     @Override
     public void play() {
+        System.out.println("You have "+TIME_LIMIT+" seconds to guess the word! GOOD LUCK");
         startTimer();
         super.play();
     }
 
-    @Override
-    protected boolean isGameOver() {
-        return super.isGameOver() || timeRemaining==0;
-    }
+
 
     @Override
     protected void resetGame() {
