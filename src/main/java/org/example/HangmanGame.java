@@ -12,7 +12,7 @@ public class HangmanGame {
     private String guessedWord;
     private int incorrectGuesses;
     private int attempts;
-    private boolean gameWon;
+    protected boolean gameWon;
     private Set guessedLetters;
 
     public HangmanGame() {
@@ -52,8 +52,6 @@ public class HangmanGame {
 
     public void play(){
         hangmanDisplay.welcomeMessage();
-
-
         do {
             System.out.println("-----------------------------------------------");
             hangmanDisplay.displayHangman(incorrectGuesses);
@@ -83,11 +81,11 @@ public class HangmanGame {
         }
     }
 
-    private boolean isGameOver(){
+    protected boolean isGameOver(){
         return incorrectGuesses >= maxIncorrectGuesses || guessedWord.equals(wordToGuess);
     }
 
-    private void handleGameOutcome() {
+    protected void handleGameOutcome() {
         if (gameWon) {
             if (this.incorrectGuesses == 0) {
                 System.out.println("Congratulations! You won ! It took you " + attempts + " attempts! And you had no incorrect guesses!");
@@ -99,12 +97,8 @@ public class HangmanGame {
         }
 
         boolean playAgain = userInput.playAgain();
-        if (playAgain) {
-            resetGame();
-            play();
-        } else {
-            System.out.println("Ahhh thats a shame , ok bye!");
-        }
+        restartGame(playAgain);
+
     }
 
     private void updateGuessedWord(char guess) {
@@ -117,12 +111,21 @@ public class HangmanGame {
         guessedWord = updatedWord.toString();
     }
 
-    private void resetGame() {
+    protected void resetGame() {
         wordToGuess = getRandomWord();
         guessedWord = wordsinDashes();
         incorrectGuesses = 0;
         attempts = 0;
         gameWon = false;
         guessedLetters = new HashSet<>();
+    }
+
+    protected void restartGame(boolean playAgain){
+        if (playAgain) {
+            resetGame();
+            play();
+        } else {
+            System.out.println("Ahhh thats a shame , ok bye!");
+        }
     }
 }

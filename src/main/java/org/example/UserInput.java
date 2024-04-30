@@ -30,11 +30,13 @@ public class UserInput {
     public boolean playAgain() {
         System.out.print("Do you want to play again? (y/n): ");
         String input = scanner.nextLine().trim().toLowerCase();
+
         return input.equals("y");
     }
 
     public int getIntInput() {
-        return scanner.nextInt();
+        int value = scanner.nextInt();
+        return value;
     }
 
     public void nextLine() {
