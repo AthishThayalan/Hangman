@@ -33,6 +33,7 @@ public class TimedHangmanGame extends HangmanGame {
                     if(!gameWon){
                         System.out.println("Times up! You ran out of time!");
                         handleGameOutcome();
+
                     }
                 }
             }
