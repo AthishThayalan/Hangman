@@ -34,7 +34,12 @@ public class UserInput {
     }
 
     public int getIntInput() {
-        int value = scanner.nextInt();
+        int value;
+        do {
+            System.out.println("Please enter 1 or 2:");
+            value = scanner.nextInt();
+        } while (value != 1 && value != 2);
+
         return value;
     }
 

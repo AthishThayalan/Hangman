@@ -17,7 +17,6 @@ public class HangmanGame {
 
     public HangmanGame() {
         this.wordBank = new WordBank();
-
         this.hangmanDisplay = new HangmanDisplay();
         this.userInput = new UserInput();
         chooseWordBank();
@@ -87,18 +86,12 @@ public class HangmanGame {
 
     protected void handleGameOutcome() {
         if (gameWon) {
-            if (this.incorrectGuesses == 0) {
-                System.out.println("Congratulations! You won ! It took you " + attempts + " attempts! And you had no incorrect guesses!");
-            } else {
-                System.out.println("Congratulations! You won ! It took you " + attempts + " attempts! And you had " + this.incorrectGuesses + " incorrect guesses!");
-            }
+            System.out.println("Congratulations! You won ! It took you " + attempts + " attempts! And you had " + (this.incorrectGuesses == 0 ? "no incorrect guesses!" : this.incorrectGuesses + " incorrect guesses!"));
         } else {
             System.out.println("Unlucky you lost. You had "+attempts+" attempts.");
         }
-
         boolean playAgain = userInput.playAgain();
         restartGame(playAgain);
-
     }
 
     private void updateGuessedWord(char guess) {

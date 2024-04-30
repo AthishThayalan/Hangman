@@ -2,8 +2,8 @@ package org.example;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 public class TimedHangmanGame extends HangmanGame {
+
     private Timer timer;
     private final int TIME_LIMIT = 3;
     private int timeRemaining;
@@ -33,7 +33,6 @@ public class TimedHangmanGame extends HangmanGame {
                     if(!gameWon){
                         System.out.println("Times up! You ran out of time!");
                         handleGameOutcome();
-
                     }
                 }
             }
